@@ -1,0 +1,3 @@
+Section 2
+Task One:
+egrep -o "^#[[:alnum:]]{6}" colours.txt && egrep -o "^#[[:alnum:]]{8}" colours.txt
