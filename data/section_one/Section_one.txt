@@ -1,3 +1,6 @@
 Task One Solution:
 echo "The Quick brown fox jumps over the lazy dog/n" > task_one.txt && wc -w task_one.txt
 
+Task Three Solution:
+curl -o dkit.html https://www.dkit.ie/
+
