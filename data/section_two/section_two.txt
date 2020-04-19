@@ -1,3 +1,15 @@
 Section 2
 Task One:
-egrep -o "^#[[:alnum:]]{6}" colours.txt && egrep -o "^#[[:alnum:]]{8}" colours.txt
+egrep -o "^#[a-fA-F0-9]{6}" colours.txt && egrep -o "^#[a-fA-F0-9]{8}" colours.txt
+
+
+
+Task two:
+// GRABS GREEN
+cut -b3,4 colours.txt
+
+// egrep PIPING VALUES INTO cut WHICH GETS THE GREEN VALUES
+egrep -o "^#[a-fA-F0-9]{6}" | cut -b3,4 colours.txt colours.txt && egrep -o "^#[a-fA-F0-9]{8}" | cut -b3,4 colours.txt
+
+// PIPE INTO tr TO ADD COMMAS AFTER EACH INSTANCE
+| tr "\n" ","
