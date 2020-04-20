@@ -5,11 +5,37 @@ egrep -o "^#[a-fA-F0-9]{6}" colours.txt && egrep -o "^#[a-fA-F0-9]{8}" colours.t
 
 
 Task two:
-// GRABS GREEN
-cut -b3,4 colours.txt
 
-// egrep PIPING VALUES INTO cut WHICH GETS THE GREEN VALUES
-egrep -o "^#[a-fA-F0-9]{6}" | cut -b3,4 colours.txt colours.txt && egrep -o "^#[a-fA-F0-9]{8}" | cut -b3,4 colours.txt
+
+
+// TO GRAB GREEN
+cut -b4,5 colours.txt
 
 // PIPE INTO tr TO ADD COMMAS AFTER EACH INSTANCE
 | tr "\n" ","
+
+
+
+// egrep PIPING VALUES INTO cut WHICH GETS THE GREEN VALUES
+egrep -o "^#[a-fA-F0-9]{6}" | cut -b4,5 colours.txt colours.txt && egrep -o "^#[a-fA-F0-9]{8}" | cut -b4,5 colours.txt
+
+// GETS GREEN VALUES AND ADDS COMMA AFTER EACH VALUE
+egrep "^#[a-fA-F0-9]{6}" colours.txt | cut -b4,5 | tr "\n" "," && egrep "^#[a-fA-F0-9]{8}" colours.txt | cut -b4,5 | tr "\n" ","
+
+
+
+// WAY TO CONVERT HEX VALUES TO DECIMAL
+printf "%d\n" 0xffffff
+
+// ANOTHER WAY TO CONVERT HEX TO DECIMAL
+echo $((0xffffff))
+
+
+//TRIED
+echo $((egrep -o "^#[a-fA-F0-9]{6}" colours.txt | cut -b0,5 | tr "\n" ","))
+
+printf "%d\n" | egrep -o "^#[a-fA-F0-9]{6}" colours.txt | cut -b1,5 | tr "\n" ","
+
+cat colours.txt | echo "value is: " egrep -o "^#[a-fA-F0-9]{6}" colours.txt | cut -b1,5
+
+egrep "^#[a-fA-F0-9]{6}" colours.txt | cut -b4,5 | tr "\n" "," && egrep "^#[a-fA-F0-9]{8}" colours.txt | cut -b4,5 | tr "\n" ","
