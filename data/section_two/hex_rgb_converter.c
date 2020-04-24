@@ -1,13 +1,14 @@
 #include <stdio.h>
 #include <stdint.h>
 #include <inttypes.h>
+#include <string.h>
 
 typedef struct
 {
   uint8_t r;
   uint8_t g;
   uint8_t b;
-  //uint8_t a;
+  uint8_t a;
 } rgba;
 
 int main(int argc, char const *argv[]) {
@@ -32,24 +33,39 @@ int main(int argc, char const *argv[]) {
    {
 
       fgets(line, 15, valid_hex_values);
-      printf("Hex Value is: \t%s\n", line);
-
       uint32_t hex;
 
-      // SCANS HEX LINE VALUE (STRING) IN TO &HEX WITH 16 AS BASE, ALLWOING IT TO READ AS A HEX VALUE
+      // SCANS HEX LINE VALUE (STRING) INTO HEX WITH 16 AS BASE (uses SCNx32 if 16 is base), ALLOWING IT TO READ AS A HEX VALUE
       sscanf(line, "%"SCNx32, &hex);
 
-      //printf("%"PRIx32"\n", hex);
-
-      rgba colour=
+      if(strlen(line) < 8)
       {
-        .r = (hex & 0xFF0000) >> 16,
-        .g = (hex & 0x00FF00) >> 8,
-        .b = (hex & 0x0000FF)
-        //.a = (hex & 0x000000FF)
-      };
+        rgba colour=
+        {
+          .r = (hex & 0xFF0000) >> 16,
+          .g = (hex & 0x00FF00) >> 8,
+          .b = (hex & 0x0000FF),
+          .a = 255
+        };
 
-      printf("%s: RGBA: (%u, %u, %u)\n", line, colour.r, colour.g, colour.b);
+        printf("\nHex Value is: %s RGBA: (%u, %u, %u, %u)\n", line, colour.r, colour.g, colour.b, colour.a);
+
+      }
+      else
+      {
+
+        rgba colour=
+        {
+          .r = (hex & 0xFF000000) >> 24,
+          .g = (hex & 0x00FF0000) >> 16,
+          .b = (hex & 0x0000FF00) >> 8,
+          .a = (hex & 0x000000FF)
+        };
+
+        printf("\nHex Value is: %s RGBA: (%u, %u, %u, %u)\n", line, colour.r, colour.g, colour.b, colour.a);
+
+      }
+
    }
 
 

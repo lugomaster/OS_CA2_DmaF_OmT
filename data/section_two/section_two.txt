@@ -39,3 +39,14 @@ printf "%d\n" | egrep -o "^#[a-fA-F0-9]{6}" colours.txt | cut -b1,5 | tr "\n" ",
 cat colours.txt | echo "value is: " egrep -o "^#[a-fA-F0-9]{6}" colours.txt | cut -b1,5
 
 egrep "^#[a-fA-F0-9]{6}" colours.txt | cut -b4,5 | tr "\n" "," && egrep "^#[a-fA-F0-9]{8}" colours.txt | cut -b4,5 | tr "\n" ","
+
+
+
+
+
+
+
+
+
+TASK 3:
+gcc hex_rgb_converter.c -o rgb_values && (egrep -o "^#[a-fA-F0-9]{6}" colours.txt | cut -c2,3,4,5,6,7 && egrep -o "^#[a-fA-F0-9]{8}" colours.txt | cut -c2,3,4,5,6,7,8,9) > valid_colours.txt && ./rgb_values > rgba-colours.txt
