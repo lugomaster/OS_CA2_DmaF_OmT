@@ -7,5 +7,7 @@ task2:
 task3:
 	curl -o dkit.html https://www.dkit.ie/
 
+task4:
+	tac dkit.html | (head -n 1 && tail -n 1) | tr "<>" "[]" > mangled.txt
 clean:
 	rm -rf dkit.html && rm -rf task_one.txt

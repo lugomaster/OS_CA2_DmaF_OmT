@@ -6,3 +6,6 @@ echo "The Quick brown fox jumps over the lazy dog/n" | tr [:lower:] [:upper:]
 
 Task Three Solution:
 curl -o dkit.html https://www.dkit.ie/
+
+Task 4:
+tac dkit.html | (head -n 1 && tail -n 1) | tr "<>" "[]" > mangled.txt  
