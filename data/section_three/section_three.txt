@@ -10,3 +10,8 @@ Task 3:
 egrep 404 access.log | egrep -o "GET .*HTTP/1.1"
 
 Task 4
+egrep MSIE access.log > access.ie.log
+
+Task 5
+egrep -o  "\GET(.*)\.+? [0-5] " access.log > out.txt
+
