@@ -3,7 +3,7 @@ task1:
 	tail access.log
 
 task2:
-	egrep -o "[0-9]{3}.[0-9]{3}.[0-9]{3}.[0-9]{2}" access.log | sort -u
+	egrep -o "[0-255].[0-255].[0-255].[0-255]" access.log | sort -u
 
 task3:
 	egrep 404 access.log | egrep -o "GET .*HTTP/1.1"
