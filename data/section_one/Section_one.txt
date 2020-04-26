@@ -1,6 +1,8 @@
 Task One Solution:
 echo "The Quick brown fox jumps over the lazy dog/n" > task_one.txt && wc -w task_one.txt
 
+Task 2:
+echo "The Quick brown fox jumps over the lazy dog/n" | tr [:lower:] [:upper:]
+
 Task Three Solution:
 curl -o dkit.html https://www.dkit.ie/
-
